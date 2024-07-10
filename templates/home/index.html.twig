@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<main class="container mx-auto px-6 py-8">
+            <h1 class="text-2xl font-semibold text-gray-900 mb-1">Nos annonces de maisons</h1>
+            <hr class="h-px mb-8 bg-gray-300 border-0 dark:bg-gray-700">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {# <?php
+                    foreach ($allResult as $property) { // Parcourt toutes les annonces
+                        if ($property['type'] === 'house'){  // Vérifie si l'annonce est une maison
+                            require 'src/_partials/listings/_card.php'; // Si oui, inclut le fichier du modèle de carte d'annonce
+                        }
+                        }
+                    
+                ?> #}
+
+                {% for property in listings %}
+                {# {% if property['type'] == 'house' %} #}
+                {% include 'home/partials/_card.html.twig' %}
+                {# with { 'property' : property } #}
+                {# {% endif %} #}
+                {% endfor %}
+                
+            </div>
+
+            <h1 class="text-2xl font-semibold text-gray-900 mb-1 mt-20">Nos annonces d'appartements</h1>
+            <hr class="h-px mb-8 bg-gray-300 border-0 dark:bg-gray-700">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {# <?php
+                foreach ($allResult as $property) { // Parcourt toutes les annonces
+                    if ($property['type'] === 'apartment') { // Vérifie si l'annonce est un appartement
+                        require 'src/_partials/listings/_card.php'; // Si oui, inclut le fichier du modèle de carte d'annonce
+                    }
+                    }
+                
+                ?> #}
+                 {% for property in listings %}
+                {# {% if property['type'] == 'apartment' %} #}
+                {% include 'home/partials/_card.html.twig'%}
+                 {# with { 'property' : property } #}
+                {# {% endif %} #}
+                {% endfor %}
+            </div>
+        </main>
+{% endblock %}
